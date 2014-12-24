@@ -1,0 +1,57 @@
+.debug{
+	border: 1px solid red;
+}
+
+ul{
+	list-style-type: none;
+	padding: 0;
+}
+
+body { padding-top: 60px; }
+
+#navlogo{
+	height:60px;
+	padding: 5px;
+}
+
+
+#newsplash{
+	color: #fff;
+	background: -webkit-linear-gradient(left, #8EC643 , #2AABE1); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, #8EC643, #2AABE1); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, #8EC643, #2AABE1); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, #8EC643 , #2AABE1); /* Standard syntax */
+	background-color: #8EC643;
+	border: none;
+	border-radius: 0;
+	height:40px;
+	transition: 1s all;
+	background-repeat: no-repeat;
+	font-weight: bold;
+}
+
+#newsplash:hover{
+	background-position: 2000px;
+
+}
+
+.soapboxModal{
+	color: #3F3F3F;
+	z-index: 1;
+	width: 100%;
+	position: fixed;
+	left: 50%;
+	margin: 0 0 0 -50%;
+	height: 100%;
+}
+.modal-background{
+	background-color: #3F3F3F;
+	opacity: 0.8;
+	height: 100%;
+	width: 100%;
+	position:fixed;
+	margin-top: -40px;
+}
+#splash-content{
+	width:100%;
+}

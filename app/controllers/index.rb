@@ -5,3 +5,7 @@ end
 get '/' do 
 	erb :index
 end
+
+get '/splashes' do
+	erb :_splashes
+end

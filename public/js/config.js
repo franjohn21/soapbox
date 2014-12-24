@@ -6,16 +6,24 @@ require.config({
        "underscore": "vendor/underscore",
        "ripples": "vendor/jquery.ripples",
        "jquery": "vendor/jquery-2.1.1.min",
-       "angular": "vendor/angular"
+       "angular": "vendor/angular",
+       "angular-route": "vendor/angular-route.min",
+       "jquery-ui": "vendor/jquery-ui",
+       "blur": "vendor/blur.min"
       },
       shim: {
-        'angular': {'exports' : 'angular'}
+        'angular': {'exports' : 'angular'},
+        'angular-route' : ['angular'],
+        'jquery': {'exports' : 'jquery'},
+        'jquery-ui': ['jquery'],
+        'blur': ['jquery']
+
       }
 
     });
 
-require(['angular','jquery', 'app', 'controllers/index'], function(angular, $){
+require(['angular','jquery', 'app', 'controllers/splashController'], function(angular, $){
     $(function(){
-      angular.bootstrap(document,['soapbox']);
+      angular.bootstrap($("#main"),['soapbox']);
     });
 });
