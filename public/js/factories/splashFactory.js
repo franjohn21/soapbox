@@ -33,7 +33,6 @@ define(['app', 'moment', 'angular'], function(app, moment){
 				 })
 				 .error(function(data, status, headers, config){
 				 	console.log("ERROR: ")
-				 	console.log(data, status, headers, config)
 				 });
 		}
 

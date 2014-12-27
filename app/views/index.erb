@@ -1,8 +1,8 @@
 <div id="main">
 	<%= erb :_navbar %>
-	<div ng-controller="splashController">
+	<div ng-controller="splashController" id="splashcontroller">
 	<%= erb :_newsplash %>
-	<div class="container-fluid debug" ng-view>
+	<div class="debug" id="ngview" ng-view>
 		</div>
 	</div>
 </div>
