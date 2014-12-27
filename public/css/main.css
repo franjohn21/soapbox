@@ -7,7 +7,8 @@ ul{
 	padding: 0;
 }
 
-body { padding-top: 60px; }
+body { padding-top: 60px; 
+		}
 
 #navlogo{
 	height:60px;
@@ -52,6 +53,28 @@ body { padding-top: 60px; }
 	position:fixed;
 	margin-top: -40px;
 }
-#splash-content{
+
+
+.splash-node:hover{
+	background-color: lightblue;
+}
+
+.splash-content{
+	margin-left: 5%;
 	width:100%;
+	color: #3F3F3F;
+	font-size: 2em;
+}
+.splash-created_at{
+	color:lightgray;
+}
+.splash-upvote{
+	float:right;
+}
+.favorited{
+	color:red;
+}
+
+.user-info{
+	font-weight:bold;
 }

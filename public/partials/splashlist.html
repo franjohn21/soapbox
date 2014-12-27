@@ -1,0 +1,17 @@
+<ul>
+			<li class="debug row " ng-repeat = "splash in splashes | orderBy: '-created_at'">
+				<a ng-href="/user/{{splash.author_id}}/splash/{{splash.id}}">
+				<div class="debug col-md-offset-2 col-md-8 splash-node">
+					<span class="user-info">
+						{{splash.userInfo.first_name}} {{splash.userInfo.last_name}}
+					</span>
+					<i class="fa fa-2x fa-chevron-up splash-upvote" ng-click="upVote(splash, $event)" ng-class="{favorited: isFavorited(splash)}"></i>
+					<div class="splash-content">{{splash.content}}</div>
+					</br>
+					<span class="splash-created_at">{{splash.formatted_time}}</span>
+					
+				</div>
+				</a>
+			</li>
+		</ul>
+			<!-- <a href="#/splashes">Splashes page</a> -->

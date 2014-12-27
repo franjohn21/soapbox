@@ -22,8 +22,10 @@ require.config({
 
     });
 
-require(['angular','jquery', 'app', 'controllers/splashController'], function(angular, $){
+require(['angular','jquery', 'app', 'controllers/splashController', 'controllers/showController'], function(angular, $, app){
     $(function(){
-      angular.bootstrap($("#main"),['soapbox']);
+      
+      angular.bootstrap($("#main"),[app['name']]);
+
     });
 });

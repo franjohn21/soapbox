@@ -2,17 +2,7 @@
 	<%= erb :_navbar %>
 	<div ng-controller="splashController">
 	<%= erb :_newsplash %>
-	<div class="container-fluid debug" >
-		<ul>
-			<li class="debug row" ng-repeat = "splash in splashes">
-				<div class="debug col-md-offset-2 col-md-8">
-					<span class="userInfo"></span>
-					<span class="content">{{splash.content}}</span>
-					<i class="fa fa-star" ng-click="upVote()"></i>
-				</div>
-			</li>
-		</ul>
-			<!-- <a href="#/splashes">Splashes page</a> -->
+	<div class="container-fluid debug" ng-view>
 		</div>
 	</div>
 </div>

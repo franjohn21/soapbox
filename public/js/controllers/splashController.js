@@ -3,18 +3,21 @@ define(['app', 'jquery', 'jquery-ui','factories/splashFactory', 'blur'],function
 		
 		$scope.splashes = []
 		function init(){
-			$scope.splashes = splashFactory.getSplashes();
+			splashFactory.getSplashes($scope);
 			setInterval(function(){
-				$scope.splashes = splashFactory.getSplashes();
+				splashFactory.getSplashes($scope);
 			}, 10000);
 		}
-
-		$scope.upVote = function(){
-			console.log($(this))
+		$scope.isFavorited = function(splash){
+			return splash.favorited
+		}
+		$scope.upVote = function(splash, evt){
+			evt.preventDefault();
+			splashFactory.toggleFavorite(splash);
 		}
 
 		$scope.addSplash = function(data){
-			splashFactory.postSplash($scope.content)
+			splashFactory.postSplash($scope, tempId)
 			$scope.displayModal = false;
 		}
 		$scope.openModal = function(){
