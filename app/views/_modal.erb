@@ -1,22 +1,23 @@
 
-
 <div ng-show="displayModal" id="splashModal" class="soapboxModal" role="dialog">
-  <div class="modal-background"></div>
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" ng-click="closeModal()">&times;</button>
-        <h4 class="modal-title">Make a new splash</h4>
-      </div>
-      <form ng-submit="addSplash()">
-      <div class="modal-body">
-        <textarea placeholder="Communicate with those around you.." ng-model="content" id="splash-content" rows="3"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" ng-click="closeModal()">Close</button>
-        <button type="submit" class="btn btn-primary">Send Splash!</button>
-      </div>
-  	</form>
-    </div>
-  </div>
+	<div class="modal-background"></div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" ng-click="closeModal()">&times;</button>
+				<h4 class="modal-title">Make a new splash</h4>
+			</div>
+			<form ng-submit="addSplash()">
+				<div class="modal-body">
+					<textarea placeholder="Communicate with those around you.." ng-model="content" id="modal-content" rows="3" maxlength="255"></textarea>
+					<span id="char-remaining">{{255 - content.length}} characters remaining</span>
+					<span id="modal-reach"><i class="fa fa-users"></i> Will reach <i class="fa fa-spinner fa-spin" ng-show="reach == null"></i><span id="reach-count" ng-show="reach != null">{{reach}}</span> people</span>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" ng-click="closeModal()">Close</button>
+					<button type="submit" class="btn btn-primary">Send Splash!</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>

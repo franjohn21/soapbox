@@ -10,7 +10,10 @@ require.config({
        "angular-route": "vendor/angular-route.min",
        "jquery-ui": "vendor/jquery-ui",
        "blur": "vendor/blur.min",
-       "jquery-cookie":"vendor/jquery-cookie"
+       "jquery-cookie":"vendor/jquery-cookie",
+       "async": "vendor/async",
+       "googmarker": "vendor/geolocationmarker",
+       "smooth-scroll": "vendor/smooth-scroll"
       },
       shim: {
         'angular': {'exports' : 'angular'},
@@ -18,13 +21,14 @@ require.config({
         'jquery': {'exports' : 'jquery'},
         'jquery-ui': ['jquery'],
         'jquery-cookie': ['jquery'],
+        'smooth-scroll': ['jquery'],
         'blur': ['jquery']
 
       }
 
     });
 
-require(['angular','jquery', 'app', 'controllers/splashController', 'controllers/showController','controllers/loginController'], function(angular, $, app){
+require(['angular','jquery', 'app', 'controllers/splashController', 'controllers/showController','controllers/loginController', 'controllers/mapController', 'controllers/newSplashController','controllers/logoutController', 'auth'], function(angular, $, app){
     $(function(){
       
       angular.bootstrap($("#main"),[app['name']]);

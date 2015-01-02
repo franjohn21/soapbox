@@ -1,7 +1,22 @@
 <nav id="navbar" class="navbar navbar-default navbar-fixed-top debug">
-	<div class="container">
-		<div class="navbar-header">
-			<a ng-href="/"><img class="navbar-brand" src="images/soapboxLogo.svg" id="navlogo" /></a>
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="navbar-header">
+				<a ng-href="/"><img class="navbar-brand" src="images/soapboxLogo.svg" id="navlogo" /></a>
+			</div>
+			<div id="navbar-right" ng-controller="logoutController">
+				<button class="btn btn-danger" ng-click = "logout()">Logout</button>
+			</div>
 		</div>
 	</div>
+
+	<div class="row">
+			<div id="loading-message" style="display:none">
+				Getting your location... 
+				<i class="fa fa-spinner fa-spin"></i>
+			</div>
+		</div>
+	</div>
+
 </nav>

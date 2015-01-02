@@ -1,18 +1,18 @@
 define(['app', 'jquery', 'jquery-cookie'], function(app, $){
 
 	app.controller('loginController', function($scope, $http, $rootScope, $location){
+		$("#meta-container").hide();
 		$scope.login = function(){
 			    FB.login(function(response) {
 			      if (response.authResponse) {
 			        //Setting Cookie
-			        console.log(response)
 			        var date = new Date();
 			        date.setTime(date.getTime() + (10800000)); // 3 hours
 			        $.cookie('access_token', response.authResponse.accessToken,{ expires: date, path: '/' });
-
+			        $rootScope.$broadcast("access_token_changed");
 			        localStorage.setItem('fb_id', response.authResponse.userID);
 			        FB.api('/me', 
-			           {fields: "id,about,picture.type(large).width(300),age_range,email,first_name,last_name,gender,hometown,location,locale"}, 
+			           {fields: "id,about,picture.type(large).width(300).height(300),age_range,email,first_name,last_name,gender,hometown,location,locale"}, 
 			           function(response) {
 			              // Setting Client's localStorage
 			              localStorage.setItem('email', response.email);
@@ -25,10 +25,8 @@ define(['app', 'jquery', 'jquery-cookie'], function(app, $){
 			              $http.post('http://localhost:3000/users/sessioning_user', localStorage)
 			               .success(function(data){
 			                 localStorage.setItem('userId', data);
-			                 $rootScope.loggedUser = data;
+			                 $rootScope.loggedUser = $.cookie('access_token');
 			                 $location.path('/')
-			                 console.log($rootScope)
-			                 console.log('good session')
 			              })
 			               .error(function(data){
 			                 console.log(data.statusText);

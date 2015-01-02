@@ -1,12 +1,23 @@
 
-<div class="debug col-md-offset-2 col-md-8">
+<div class="debug col-md-offset-2 col-md-8" id="show-container">
 	<div class="splash-info">
 		<span class="user-info">
-			{{splash.userInfo.first_name}} {{splash.userInfo.last_name}}
+			<span class="user-name">{{splash.userInfo.first_name}} </span>
+			<img ng-src="{{splash.userInfo.profile_pic}}" class="fb_img"></img>
 		</span>
 		<div class="splash-content">
-			{{splash.content}}
+			{{splash.splashInfo.content}}
 		</div>
-		<span class="splash-created_at">{{splash.formatted_time}}</span>
+		<div class="splash-vote" ng-class="{favorited: isFavorited(splash)}">
+			<span class="splash-score">{{splash.score}}</span>
+			<i class="fa fa-2x fa-chevron-up splash-upvote" ng-click="upVote($event)" ></i>
+		</div>
+		<div class="splash-meta">
+			<span class="reach" title="People reached"><i class="fa fa-users" ></i> {{splash.reach}} </span> 
+			&nbsp;&nbsp;
+			<span class="splash-created_at" title="When splash was sent"><i class="fa fa-clock-o"></i> {{splash.formatted_time}}</span>
+			&nbsp;&nbsp;
+			<span class="splash-distance" title="Distance from your location when splash was sent"><i class="fa fa-globe"></i> {{splash.formatted_distance}} </span>
+		</div>	
 	</div>
 </div>
