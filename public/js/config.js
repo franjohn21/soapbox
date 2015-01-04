@@ -22,13 +22,14 @@ require.config({
         'jquery-ui': ['jquery'],
         'jquery-cookie': ['jquery'],
         'smooth-scroll': ['jquery'],
-        'blur': ['jquery']
+        'blur': ['jquery'],
+        'googmarker': ['async!https://maps.googleapis.com/maps/api/js?key=AIzaSyAF7bNkrouk4BrhFzk3mFUIRlBceQsKxXo']
 
       }
 
     });
 
-require(['angular','jquery', 'app', 'controllers/splashController', 'controllers/showController','controllers/loginController', 'controllers/mapController', 'controllers/newSplashController','controllers/logoutController', 'auth'], function(angular, $, app){
+require(['angular','jquery', 'app', 'controllers/splashController','controllers/loginController', 'controllers/mapController', 'controllers/newSplashController','controllers/logoutController', 'auth'], function(angular, $, app){
     $(function(){
       
       angular.bootstrap($("#main"),[app['name']]);

@@ -8,10 +8,10 @@ define(['angular', 'jquery','angular-route', 'jquery-cookie'], function(angular,
 				controller: 'splashController',
 				templateUrl: '/partials/splashlist.html',
 				resolve: {
-				  latlong: ["$q","$rootScope",function($q, $rootScope)
+				    latlong: ["$q","$rootScope", "splashFactory",function($q, $rootScope, splashFactory)
 				       {
 				        var deferred = $q.defer();
-			            getLocation(deferred, $rootScope);
+			            getLocation(deferred, $rootScope, splashFactory);
 				        return deferred.promise;
 				       }]
 				   }
@@ -21,13 +21,14 @@ define(['angular', 'jquery','angular-route', 'jquery-cookie'], function(angular,
 			  controller: 'splashController',
 			  templateUrl: '/partials/splashlist.html',
 			  resolve: {
-			  	  latlong: ["$q","$rootScope",function($q, $rootScope)
+			  	  latlong: ["$q","$rootScope", "splashFactory",function($q, $rootScope, splashFactory)
 			  	       {
 			  	        var deferred = $q.defer();
-			              getLocation(deferred, $rootScope);
+			              getLocation(deferred, $rootScope, splashFactory);
 			  	        return deferred.promise;
 			  	       }]
 			  	   }
+			  	   
 			}) 
 			.when('/login',
 			{
@@ -35,7 +36,8 @@ define(['angular', 'jquery','angular-route', 'jquery-cookie'], function(angular,
 			  templateUrl: 'partials/login.html',
 			  resolve: {
 			  	hideMap: [function(){
-			  		$("#meta-container").hide();
+			  		$("#meta-container").hide()	;
+			  		$("#postLoginNav").hide()
 			  	}]
 			  }
 			})        
@@ -45,19 +47,20 @@ define(['angular', 'jquery','angular-route', 'jquery-cookie'], function(angular,
 		$http.defaults.headers.common.Authorization = $.cookie('access_token');
 		$rootScope.$on("access_token_changed", function(){			
 			$http.defaults.headers.common.Authorization = $.cookie('access_token');
+			$rootScope.loggedUser = $.cookie('access_token');
 		});
 	    // register listener to watch route changes
 	    $rootScope.$on("$routeChangeStart", function(event, next, current) {
-	    	console.log("next:")
-	    	console.log()
 	      $rootScope.loggedUser = $.cookie('access_token');
 	      if ( $rootScope.loggedUser == null ) {
 	        // no logged user, we should be going to #login
 	        if ( next.templateUrl == "partials/login.html" ) {
 	          // already going to #login, no redirect needed
+	 
 	        } 
 	        else {
 	          // not going to #login, we should redirect now
+
 	          $location.path( "/login" );
 	        }
 	      }         
@@ -77,17 +80,19 @@ define(['angular', 'jquery','angular-route', 'jquery-cookie'], function(angular,
 	    };
 	 });
 
-	function getLocation(deferred, $rootScope){
-		console.log($rootScope.latlong)
+	function getLocation(deferred, $rootScope, splashFactory){
 		if( $rootScope.latlong == null)
 		{
+			$("#loading-message").slideToggle();
+			$("#loading-text").text("Getting your location... ")
 			if(navigator.geolocation){
-				$("#loading-message").slideToggle();
+
 				navigator.geolocation.getCurrentPosition(function(data){
 					$rootScope.latlong = data
-					$rootScope.$broadcast("coordsSet")
-					deferred.resolve(data) 
-				$("#loading-message").slideToggle();
+					$rootScope.$broadcast("coordsSet");
+					splashFactory.initializeVals(deferred, data, $rootScope)
+					
+				// $("#loading-message").slideToggle();
 				}, handleDenial);
 			}
 			else
@@ -95,9 +100,11 @@ define(['angular', 'jquery','angular-route', 'jquery-cookie'], function(angular,
 		}
 		else
 		{
-			console.log("what is happening")
 			deferred.resolve($rootScope.latlong)
 		}
+
+			
+		
 	}
 
 	function handleDenial(error){

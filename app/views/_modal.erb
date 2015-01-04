@@ -8,10 +8,12 @@
 				<h4 class="modal-title">Make a new splash</h4>
 			</div>
 			<form ng-submit="addSplash()">
-				<div class="modal-body">
+				<div class="modal-body clearfix">
 					<textarea placeholder="Communicate with those around you.." ng-model="content" id="modal-content" rows="3" maxlength="255"></textarea>
 					<span id="char-remaining">{{255 - content.length}} characters remaining</span>
-					<span id="modal-reach"><i class="fa fa-users"></i> Will reach <i class="fa fa-spinner fa-spin" ng-show="reach == null"></i><span id="reach-count" ng-show="reach != null">{{reach}}</span> people</span>
+					<span id="modal-reach"><i class="fa fa-users"></i> Will reach <i class="fa fa-spinner fa-spin" ng-show="reach == null"></i><span id="reach-count" ng-show="reach != null">{{reach}}</span>
+					<ng-pluralize count="reach" when="{'1' : 'person', 'other': '{{splash.userInfo.score}} people'}"></ng-pluralize>
+				</span>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" ng-click="closeModal()">Close</button>

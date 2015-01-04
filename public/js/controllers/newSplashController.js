@@ -17,7 +17,7 @@ define(['app', 'jquery', 'jquery-ui','factories/splashFactory'],function(app, $)
 			$("#newsplash").addClass("addBlur");
 			$("#map-controller").addClass("addBlur");
 
-			$http.get('http://localhost:3000/users/reach')
+			$http.get('http://soapboxapi.herokuapp.com/users/reach')
 				 .success(function(count){
 				 	$scope.reach = count
 				 })
@@ -30,8 +30,7 @@ define(['app', 'jquery', 'jquery-ui','factories/splashFactory'],function(app, $)
 			$("#ngview").removeClass("addBlur");
 			$("#newsplash").removeClass("addBlur");
 			$("#map-controller").removeClass("addBlur");
-			$scope.content = ""
-			
+			$scope.content = "";
 		}
 
 

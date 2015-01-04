@@ -243,12 +243,10 @@ GeolocationMarker.prototype.updatePosition_ = function(position) {
 GeolocationMarker.prototype.watchPosition_ = function() {
   var self = this;
 
-  if(navigator.geolocation) {
     this.watchId_ = navigator.geolocation.watchPosition(
         function(position) { self.updatePosition_(position); },
         function(e) { google.maps.event.trigger(self, "geolocation_error", e); },
         this.getPositionOptions());
-  }
 };
 
 /**

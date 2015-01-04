@@ -1,14 +1,16 @@
-<div class="row" id="meta-container">
+<div class="row fix-row" id="meta-container">
 	<div ng-controller="newSplashController">
-		<button id="newsplash" class="btn btn-success btn-block debug" ng-click="openModal()">
+		<button id="newsplash" class="btn btn-success btn-block" ng-click="openModal()">
 			New Splash! 
 		</button>
 		<%= erb :_modal %>
 
 	</div>
-	<div class="debug" ng-controller="mapController" id="map-controller">
+	<div class="col-md-8 col-md-offset-2" id="map-container">
+	<div ng-controller="mapController" id="map-controller">
 			<div id="map-canvas">
 			</div>
+	</div>
 	</div>
 </div>
 

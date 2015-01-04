@@ -18,9 +18,7 @@ require 'logger'
 
 require 'sinatra'
 require "sinatra/reloader" if development?
-require 'httparty'
 require 'erb'
-require 'omniauth-facebook'
 require 'dotenv'
 Dotenv.load
 
@@ -40,10 +38,6 @@ configure do
   set :protection, :except => :session_hijacking
   # Set the views to
   set :views, File.join(Sinatra::Application.root, "app", "views")
-end
-
-use OmniAuth::Builder do
-  provider :facebook, APP_ID, APP_SECRET
 end
 
 

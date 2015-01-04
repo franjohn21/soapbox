@@ -1,19 +1,25 @@
-<nav id="navbar" class="navbar navbar-default navbar-fixed-top debug">
-	<div class="container-fluid">
-	<div class="row">
+<nav id="navbar" class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid fix-container">
+	<div class="row fix-row">
 		<div class="col-md-12">
-			<div class="navbar-header">
+			<div id="navbar-header">
 				<a ng-href="/"><img class="navbar-brand" src="images/soapboxLogo.svg" id="navlogo" /></a>
 			</div>
-			<div id="navbar-right" ng-controller="logoutController">
-				<button class="btn btn-danger" ng-click = "logout()">Logout</button>
+			<div ng-controller="logoutController">
+			<div id="navbar-right" >
+				<div id="postLoginNav" class="clearfix">
+					<button class="btn btn-danger" ng-click = "logout()">Logout</button>
+				</div>
+					<a id="about-this" ng-click="openAbout()">How Does It Work? </a>
+			</div>
+			<div ng-include="'partials/infomodal.html'" ng-show="displayModal"></div>
 			</div>
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row fix-row">
 			<div id="loading-message" style="display:none">
-				Getting your location... 
+				<span id="loading-text"></span>
 				<i class="fa fa-spinner fa-spin"></i>
 			</div>
 		</div>
