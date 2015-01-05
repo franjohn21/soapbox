@@ -1,11 +1,11 @@
 # SoapBox - Geolocation based messaging system
 
-[soapbox-web.herokuapp.com] (soapbox-web.herokuapp.com)
+[soapbox-web.herokuapp.com] (http://soapbox-web.herokuapp.com)
 
-> Originally a [https://github.com/hamberguesa/soapbox] (Dev Bootcamp final project), redone with Angular/ Rails API by Francis John
+> Originally a [Dev Bootcamp final project] (https://github.com/hamberguesa/soapbox) , redone with Angular/ Rails API by Francis John
 
 #### Backend 
-* Decoupled Rails API app - [https://github.com/franjohn21/soapbox_api] (Separate github repo)
+* Decoupled Rails API app - [Separate github repo] (https://github.com/franjohn21/soapbox_api)
 * PostgreSQL database
 * Ruby Geocoder API
 
