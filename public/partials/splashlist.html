@@ -1,0 +1,10 @@
+
+
+<ul id="splashList">
+	<li class="row fix-row" ng-repeat = "splash in splashes | orderBy: '-splashInfo.created_at' | filter:splashFilter">
+		<div ng-include="'partials/splashnode.html'" class='clearfix'></div>
+		<div ng-include="'partials/commentlist.html'">
+		</div>
+			
+	</li>
+</ul>

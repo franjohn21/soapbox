@@ -1,0 +1,29 @@
+
+<div id="infoModal" class="soapboxModal" role="dialog">
+	<div class="modal-background"></div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header remove-border text-center">
+				<button type="button" class="close" ng-click="closeAbout()">&times;</button>
+				<h4 class="modal-title">Welcome to</h4> 
+				<img src="images/soapboxLogo.svg" id="infoModalLogo"></img>
+			</div>
+				<div class="modal-body clearfix">
+					<h4 class="border-bottom">Here's how it works:</h4>
+					<h5>1. Soapbox uses your location to find others in your area. </h5>
+					<h5>2. You can send splashes to people within range (1000 meters) at the time the splash was sent. You will receive splashes from those around you. <span class="italics"> If this is your first time logging in, the most recent splashes made will be added to your list, regardless of location</span></h5>
+					<div class="text-center">
+					<img src="images/splash-image.png" class="modalImage"></img>
+					</div>
+					<h5>3. As those around you send splashes, you will receive them if you are in range. You can then comment on the splashes that were sent to you. </h5>
+					<h5>4. You can track where you've been and what people have been talking about at different locations throughout your day.  </h5>
+					<div class="text-center">
+					<img src="images/soapbox-map.png" class="modalImage"></img>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" ng-click="closeAbout()" ng-submit="closeAbout()">Okay!</button>
+				</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,33 @@
+<div class="col-md-offset-2 col-md-8 splash-node navbar-default clearfix" ng-click="changeRoute(splash, $event)" ng-mouseenter="showSplashInMap(splash)" ng-mouseleave="removeSplashFromMap(splash)" id="splash-{{splash.id}}">
+	<div class="col-xs-2 text-center fix-column splash-image-container">
+		<img ng-src="{{splash.userInfo.profile_pic}}" class="fb_img"></img>
+	</div>
+	<div class="col-xs-10 fix-column">
+		<div class=" user-info">
+			<span class="user-name">{{splash.userInfo.first_name}} </span>
+			<span class="user-score" title="Number of favorites for this user">
+				<ng-pluralize count="splash.userInfo.score" when="{'1' : '{{splash.userInfo.score}} point', 'other': '{{splash.userInfo.score}} points'}"></ng-pluralize></span>
+		</div>
+		
+		<div class="splash-vote" ng-class="{favorited: isFavorited(splash)}">
+		<span class="splash-score">{{splash.score}}</span>
+		<i class="fa fa-chevron-up splash-upvote" ng-click="upVote(splash, $event)" ></i>
+		</div>
+		<div class="splash-content">{{splash.splashInfo.content}}</div>
+	</div>
+	<div class="col-xs-12 splash-meta">
+			<span class="reach" title="People reached"><i class="fa fa-users" ></i> {{splash.reach}} </span> 
+			&nbsp;&nbsp;
+			<span class="splash-created_at" title="When splash was sent"><i class="fa fa-clock-o"></i> {{splash.formatted_time}}</span>
+			&nbsp;&nbsp;
+			<span class="splash-distance" title="Distance from your location when splash was sent"><i class="fa fa-globe"></i> {{splash.formatted_distance}} </span>
+			&nbsp;&nbsp;
+			<span class="comment-count splash-reply" ng-click="reply(splash, $event)"> <ng-pluralize count="splash.comments" when="{'1': '{{splash.comments}} comment', 'other': '{{splash.comments}} comments'}"></ng-pluralize></span>
+
+			<div class="meta-right">
+				<span class="splash-reply" ng-click="reply(splash, $event)"><i class="fa fa-reply"></i></span>
+				&nbsp;&nbsp;
+				<span ng-show="checkUser(splash, $event)" ng-click="deleteItem(splash, $event, 'splash')" class="splash-trash"><i class="fa fa-trash"></i></span>
+			</div>
+		</div>
+</div>

@@ -1,0 +1,38 @@
+<div class="col-md-8 col-md-offset-2">
+<div class="reply startHidden row fix-row">
+	<div class="col-xs-offset-2 col-xs-10 comment-reply">
+	<form ng-submit="addComment()">
+		<div class="comment-body">
+			<textarea placeholder="Respond to {{splash.userInfo.first_name}}.." ng-model="commentContent" id="commentContent" class="comment-text" rows="3" maxlength="255"></textarea>
+		
+		</div>
+		<span id="char-remaining">{{255 - commentContent.length}} characters remaining</span>
+		<div class="comment-footer">
+			<button type="button" class="btn btn-default" ng-click="reply()">Close</button>
+			<button type="submit" class="btn btn-primary">Reply!</button>
+		</div>
+	</form>
+</div>
+</div>
+<ul ng-repeat = "comment in comments | orderBy: '-commentInfo.created_at'" >
+<li class="row fix-row">
+	<div class="col-xs-offset-2 col-xs-10 navbar-inverse comment-node">
+		<div class="comment-info clearfix">
+			<div class="comment-image">
+				<img ng-src="{{comment.userInfo.profile_pic}}" class="fb_img"></img>
+			</div>
+			<div class="comment-name">{{comment.userInfo.first_name}}		
+				<span class="user-score" title="Number of favorites for this user">
+				<ng-pluralize count="splash.userInfo.score" when="{'1' : '{{splash.userInfo.score}} point', 'other': '{{splash.userInfo.score}} points'}"></ng-pluralize></span> </div>
+		</div>
+		<div class="comment-content">{{comment.commentInfo.content}}</div>
+		<div class="splash-meta">
+		<span class="splash-created_at" title="When splash was sent"><i class="fa fa-clock-o"></i> {{comment.formatted_time}}</span>
+		<div class="meta-right">
+			<span ng-show="checkUser(comment, $event)" ng-click="deleteItem(comment, $event, 'comment')" class="splash-trash"><i class="fa fa-trash"></i></span>
+		</div>
+	</div>
+	</div>
+</li>
+</ul>
+</div>
